@@ -22,3 +22,6 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.errorbells = false
+
+vim.opt.termguicolors = true
+vim.opt.background = "dark"

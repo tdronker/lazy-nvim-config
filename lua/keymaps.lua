@@ -48,3 +48,14 @@ map("n", "<leader>xd", ":TroubleToggle document_diagnostics<CR>")
 map("n", "<leader>ca", ":TroubleToggle quickfix<CR>")
 map("n", "<leader>xl", ":TroubleToggle loclist<CR>")
 map("n", "<leader>gR", ":TroubleToggle lsp_references<CR>")
+
+-- Copilot keymaps map accept to <C-f>
+-- map("i", "<C-f>", "<C-o>:call copilot#Accept()<CR>")
+-- Open copilot panel
+--
+-- Define a custom function to accept Copilot suggestions
+vim.api.nvim_set_keymap("i", "<C-f>", 'copilot#Accept("<CR>")', { noremap = true, expr = true })
+vim.api.nvim_set_keymap("i", "<C-n>", "copilot#Next()", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("i", "<C-p>", "copilot#Previous()", { noremap = true, expr = true })
+-- open copilot panel
+map("n", "<leader>cp", ":Copilot panel<CR>")

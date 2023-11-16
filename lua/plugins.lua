@@ -79,4 +79,5 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({ "nvimdev/lspsaga.nvim" })
+	use("github/copilot.vim")
 end)
