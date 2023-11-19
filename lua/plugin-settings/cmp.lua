@@ -1,5 +1,13 @@
+---@diagnostic disable: redundant-parameter
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+
+lspkind.init({
+	symbol_map = {
+		Copilot = "",
+	},
+})
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 cmp.setup({
 	snippet = {
@@ -23,22 +31,28 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
 	sources = cmp.config.sources({
-		{ name = "luasnip" },
+		{ name = "copilot" },
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
+		{ name = "crates" },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
-			with_text = true, -- Show the text along with the icon
-			maxwidth = 50, -- Prevent the popup from being too wide
-			-- Define custom icons here if you want
-			before = function(entry, vim_item)
-				-- This sets a default icon for all items
-				vim_item.kind = string.format("%s", lspkind.presets.default[vim_item.kind])
-				-- ... additional modifications to vim_item can be made here ...
-				return vim_item
-			end,
+			mode = "symbol",
+			with_text = false, -- Show the text along with the icon
+			maxwidth = 75, -- Prevent the popup from being too wide
 		}),
+	},
+	window = {
+		-- Completion
+		completion = {
+			border = "rounded", -- You can use 'single', 'double', 'shadow', 'rounded' or 'none'
+		},
+		-- Documentation
+		documentation = {
+			border = "rounded", -- You can use 'single', 'double', 'shadow', 'rounded' or 'none'
+		},
 	},
 })

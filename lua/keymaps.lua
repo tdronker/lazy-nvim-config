@@ -15,6 +15,8 @@ map("n", "<leader>fg", ":Telescope live_grep<CR>")
 map("n", "<leader>f", ":Format<CR>")
 map("n", "<Tab>", ":BufferNext<CR>")
 map("n", "<S-Tab>", ":BufferPrevious<CR>")
+map("n", "mp", ":BufferMovePrevious<CR>")
+map("n", "mn", ":BufferMoveNext<CR>")
 
 map("n", "<silent>å", ":lua vim.lsp.buf.code_action()")
 -- map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -26,14 +28,14 @@ map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 -- Show hover documentation
 -- map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
 map("n", "K", ":Lspsaga hover_doc<CR>")
--- Show signature help
-map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 -- Rename
 -- map("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
 map("n", "rn", ":Lspsaga rename<CR>")
 -- Code action
 -- map("n", "å", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 map("n", "å", ":Lspsaga code_action<CR>")
+map("n", "<leader>v", ":vs<CR><C-w>l")
+map("n", "<leader>s", ":split<CR><C-w>j")
 
 -- Diagnostics
 -- map("n", "ö", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
@@ -45,17 +47,17 @@ map("n", "ä", ":Lspsaga diagnostic_jump_next<CR>")
 map("n", "<leader>xx", ":TroubleToggle<CR>")
 map("n", "<leader>xw", ":TroubleToggle workspace_diagnostics<CR>")
 map("n", "<leader>xd", ":TroubleToggle document_diagnostics<CR>")
-map("n", "<leader>ca", ":TroubleToggle quickfix<CR>")
-map("n", "<leader>xl", ":TroubleToggle loclist<CR>")
-map("n", "<leader>gR", ":TroubleToggle lsp_references<CR>")
+map("n", "<leader>u", ":UndotreeToggle<CR>")
 
--- Copilot keymaps map accept to <C-f>
--- map("i", "<C-f>", "<C-o>:call copilot#Accept()<CR>")
--- Open copilot panel
---
--- Define a custom function to accept Copilot suggestions
-vim.api.nvim_set_keymap("i", "<C-f>", 'copilot#Accept("<CR>")', { noremap = true, expr = true })
-vim.api.nvim_set_keymap("i", "<C-n>", "copilot#Next()", { noremap = true, expr = true })
-vim.api.nvim_set_keymap("i", "<C-p>", "copilot#Previous()", { noremap = true, expr = true })
--- open copilot panel
-map("n", "<leader>cp", ":Copilot panel<CR>")
+-- Resize windows
+map("n", "+", ":vertical resize +5<CR>")
+map("n", "-", ":vertical resize -5<CR>")
+map("n", "<M-+>", ":resize +5<CR>")
+map("n", "<M-->", ":resize -5<CR>")
+
+map("n", "[", ":BookmarkNext<CR>")
+map("n", "]", ":BookmarkPrev<CR>")
+-- Easy Motion
+-- Map <Leader>f for the EasyMotion overwin-finder
+map("n", "<leader>ai", ":NeoAI<CR>")
+map("v", "<leader>aic", ":NeoAIContext<CR>")

@@ -1,4 +1,4 @@
-return require("packer").startup(function(use)
+require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
@@ -18,12 +18,6 @@ return require("packer").startup(function(use)
 	})
 	use("nvim-tree/nvim-web-devicons")
 	use({
-		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("lualine").setup({})
-		end,
-	})
-	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("ibl").setup()
@@ -39,6 +33,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({ "christoomey/vim-tmux-navigator" })
+	use({ "justinmk/vim-sneak" })
+	use({ "easymotion/vim-easymotion" })
 
 	-- Coding
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -79,5 +75,57 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({ "nvimdev/lspsaga.nvim" })
-	use("github/copilot.vim")
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup()
+		end,
+	})
+	use({ "zbirenbaum/copilot.lua" })
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	})
+	use({ "mbbill/undotree" })
+	use({ "MunifTanjim/nui.nvim" })
+	use({ "simrat39/rust-tools.nvim" })
+	use({
+		"Saecki/crates.nvim",
+		config = function()
+			require("crates").setup({
+				src = { cmp = { enabled = true } },
+			})
+		end,
+	})
+	use({
+		"Bryley/neoai.nvim",
+		cmd = {
+			"NeoAI",
+			"NeoAIOpen",
+			"NeoAIClose",
+			"NeoAIToggle",
+			"NeoAIContext",
+			"NeoAIContextOpen",
+			"NeoAIContextClose",
+			"NeoAIInject",
+			"NeoAIInjectCode",
+			"NeoAIInjectContext",
+			"NeoAIInjectContextCode",
+		},
+		config = function()
+			---@diagnostic disable-next-line: missing-fields
+			require("neoai").setup({
+				models = {
+					{
+						name = "openai",
+						model = "gpt-4",
+						params = nil,
+					},
+				},
+			})
+		end,
+	})
 end)
