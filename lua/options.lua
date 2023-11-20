@@ -26,6 +26,8 @@ vim.g.syntax_on = false
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
+vim.o.clipboard = "unnamedplus"
+
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
