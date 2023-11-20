@@ -2,7 +2,7 @@ require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	-- Design
+	-- ============================== Plugin Category: Design ==============================
 	use({
 		"folke/tokyonight.nvim",
 		config = function()
@@ -23,8 +23,26 @@ require("packer").startup(function(use)
 			require("ibl").setup()
 		end,
 	})
+	use({
+		"echasnovski/mini.animate",
+		config = function()
+			require("mini.animate").setup()
+		end,
+	})
+	use({
+		"echasnovski/mini.starter",
+		config = function()
+			require("mini.starter").setup()
+		end,
+	})
+	use({
+		"echasnovski/mini.cursorword",
+		config = function()
+			require("mini.cursorword").setup()
+		end,
+	})
 
-	-- Navigation
+	-- ============================== Plugin Category: Navigation ==============================
 	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 	use({
 		"nvim-tree/nvim-tree.lua",
@@ -35,8 +53,17 @@ require("packer").startup(function(use)
 	use({ "christoomey/vim-tmux-navigator" })
 	use({ "justinmk/vim-sneak" })
 	use({ "easymotion/vim-easymotion" })
+	use({
+		"echasnovski/mini.map",
+		config = function()
+			require("mini.map").setup({
+				default_mappings = true,
+				default_mappings_visual = true,
+			})
+		end,
+	})
 
-	-- Coding
+	-- ============================== Plugin Category: Coding ==============================
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("tpope/vim-fugitive")
 	use("tpope/vim-surround")
@@ -121,7 +148,7 @@ require("packer").startup(function(use)
 				models = {
 					{
 						name = "openai",
-						model = "gpt-4",
+						model = "gpt-3.5-turbo",
 						params = nil,
 					},
 				},
