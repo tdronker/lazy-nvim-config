@@ -34,7 +34,8 @@ map("n", "mp", ":BufferMovePrevious<CR>")
 map("n", "mn", ":BufferMoveNext<CR>")
 
 -- Plugin: Lspsaga
-map("n", "gd", ":Lspsaga goto_definition<CR>")
+map("n", "gd", ":Lspsaga goto_type_definition<CR>")
+map("n", "gi", ":Lspsaga finder<CR>")
 map("n", "K", ":Lspsaga hover_doc<CR>")
 map("n", "rn", ":Lspsaga rename<CR>")
 map("n", "å", ":Lspsaga code_action<CR>")

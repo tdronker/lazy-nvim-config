@@ -39,7 +39,9 @@ lspconfig.tsserver.setup({
 	end,
 })
 
-lspconfig.eslint.setup({})
+lspconfig.eslint.setup({
+	filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+})
 
 lspconfig.rust_analyzer.setup({
 	settings = {
