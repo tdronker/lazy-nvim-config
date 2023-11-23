@@ -9,7 +9,7 @@ mason.setup({
 
 -- Automatically install LSP servers
 mason_lspconfig.setup({
-	-- ensure_installed = { "lua_ls", "tsserver", "rust_analyzer" },
+	ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "pyright" },
 	automatic_installation = true,
 })
 
@@ -47,7 +47,6 @@ lspconfig.eslint.setup({
 	filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
 })
 
-lspconfig.pylsp.setup({})
 lspconfig.pyright.setup({})
 
 lspconfig.rust_analyzer.setup({
