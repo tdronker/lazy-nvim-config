@@ -3,11 +3,13 @@ local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 
 -- Initialize Mason
-mason.setup({})
+mason.setup({
+	ensure_installed = { "black" },
+})
 
 -- Automatically install LSP servers
 mason_lspconfig.setup({
-	ensure_installed = { "lua_ls", "tsserver", "rust_analyzer" },
+	-- ensure_installed = { "lua_ls", "tsserver", "rust_analyzer" },
 	automatic_installation = true,
 })
 
@@ -42,6 +44,9 @@ lspconfig.tsserver.setup({
 lspconfig.eslint.setup({
 	filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
 })
+
+lspconfig.pylsp.setup({})
+lspconfig.pyright.setup({})
 
 lspconfig.rust_analyzer.setup({
 	settings = {

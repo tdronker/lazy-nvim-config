@@ -28,5 +28,14 @@ require("formatter").setup({
 		rust = {
 			require("formatter.filetypes.rust").rustfmt,
 		},
+		python = {
+			function()
+				return {
+					exe = "black",
+					args = { "-" },
+					stdin = true,
+				}
+			end,
+		},
 	},
 })
