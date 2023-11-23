@@ -41,6 +41,8 @@ lspconfig.tsserver.setup({
 	end,
 })
 
+lspconfig.pyright.setup({})
+
 lspconfig.eslint.setup({
 	filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
 })
