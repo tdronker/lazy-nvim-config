@@ -1,3 +1,4 @@
-packer_compiled.lua
+.packer_compiled.lua
 undo
 undodir
+.undo

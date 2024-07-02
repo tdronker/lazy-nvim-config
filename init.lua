@@ -1,22 +1,25 @@
-require("autocmds")
-require("keymaps")
-require("plugins")
+-- Function to ensure lazy.nvim is installed
+local ensure_lazy_installed = function()
+    local lazy_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/lazy.nvim'
+    if not vim.loop.fs_stat(lazy_path) then
+        vim.fn.system({
+            'git',
+            'clone',
+            '--depth', '1',
+            'https://github.com/folke/lazy.nvim',
+            lazy_path
+        })
+        vim.cmd([[packadd lazy.nvim]])
+    end
+end
 
--- Plugins
-require("plugin-settings.telescope")
-require("plugin-settings.copilot")
-require("plugin-settings.lspconfig")
-require("plugin-settings.formatter")
-require("plugin-settings.treesitter")
-require("plugin-settings.saga")
-require("plugin-settings.cmp")
+-- Ensure lazy.nvim is installed
+ensure_lazy_installed()
 
--- Options
-require("options")
+-- Load settings
+require('settings.options')
+require('settings.keymaps')
+require('settings.autocmds')
 
-vim.cmd([[
-  augroup FormatOptions
-    autocmd!
-    autocmd BufEnter * setlocal formatoptions-=o
-  augroup END
-]])
+-- Load plugins
+require('plugins')
