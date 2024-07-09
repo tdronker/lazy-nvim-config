@@ -66,7 +66,7 @@ require('lazy').setup({
   -- Navigation
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' },
     config = function()
       require('plugins.telescope')
     end
@@ -109,6 +109,9 @@ require('lazy').setup({
         }
       }
     end
+  },
+  {
+    'tpope/vim-fugitive',
   },
 
   -- Theme

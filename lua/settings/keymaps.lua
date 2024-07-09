@@ -1,6 +1,7 @@
 local utils = require('utils')
 
 utils.map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+utils.map('n', '<leader>q', '<Cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 utils.map('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
 utils.map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 utils.map('n', 'X', '<Cmd>bd<CR>', { noremap = true, silent = true })
