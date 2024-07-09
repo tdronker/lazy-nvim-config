@@ -59,7 +59,9 @@ require('lazy').setup({
       require("plugins.guard")
     end
   },
-
+  {
+    'tpope/vim-surround',
+  },
 
   -- Navigation
   {
@@ -78,7 +80,10 @@ require('lazy').setup({
   },
   {
     'romgrk/barbar.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' }
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    config = function()
+      require('plugins.barbar')
+    end
   },
   {
     'nvim-lualine/lualine.nvim',

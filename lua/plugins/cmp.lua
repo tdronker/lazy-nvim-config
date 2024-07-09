@@ -4,6 +4,10 @@ local luasnip = require('luasnip')
 require('copilot_cmp').setup()
 
 cmp.setup({
+  window = {
+    documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered()
+  },
   completion = {
     completeopt = 'menu,menuone,noinsert',
     keyword_length = 1,
