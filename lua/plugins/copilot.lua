@@ -4,6 +4,7 @@ require('CopilotChat').setup({
 })
 utils.map('n', '<C-c>', ':CopilotChat<CR>', { noremap = true, silent = true })
 utils.map('v', '<C-c>', ':CopilotChat<CR>', { noremap = true, silent = true })
+utils.map('n', '<leader>cc', ':CopilotChatCommitStaged<CR>', { noremap = true, silent = true })
 
 
 require('copilot').setup({
