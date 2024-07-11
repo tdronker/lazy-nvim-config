@@ -1,5 +1,6 @@
 -- Ensure lazy.nvim is loaded
 vim.cmd([[packadd lazy.nvim]])
+local utils = require('utils')
 
 -- Setup lazy.nvim
 require('lazy').setup({
@@ -66,8 +67,9 @@ require('lazy').setup({
   },
   {
     'terrortylor/nvim-comment',
+    event = 'BufWinEnter',
     config = function()
-      require('nvim_comment').setup()
+      require('plugins.comment')
     end
   },
 

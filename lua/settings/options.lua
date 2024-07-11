@@ -25,7 +25,7 @@ vim.opt.splitbelow = true         -- Horizontal splits will automatically be bel
 -- Performance optimizations
 vim.opt.lazyredraw = true -- Do not redraw while executing macros
 vim.opt.updatetime = 300  -- Faster completion
-vim.opt.timeoutlen = 150  -- By default timeoutlen is 1000 ms
+vim.opt.timeoutlen = 300  -- By default timeoutlen is 1000 ms
 
 -- Backup and undo settings
 vim.opt.backup = false                                 -- Don't create backup files
