@@ -13,7 +13,9 @@ require('lazy').setup({
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+
     branch = "canary",
+    event = 'BufWinEnter',
     dependencies = {
       "zbirenbaum/copilot.lua",
       "nvim-lua/plenary.nvim",
@@ -62,6 +64,12 @@ require('lazy').setup({
   {
     'tpope/vim-surround',
   },
+  {
+    'terrortylor/nvim-comment',
+    config = function()
+      require('nvim_comment').setup()
+    end
+  },
 
   -- Navigation
   {
@@ -80,6 +88,7 @@ require('lazy').setup({
   },
   {
     'romgrk/barbar.nvim',
+    event = 'BufWinEnter',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require('plugins.barbar')
