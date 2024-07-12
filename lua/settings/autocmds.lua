@@ -1,3 +1,3 @@
 vim.api.nvim_exec([[
-  autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx EslintFixAll
+  autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx EslintFixAll
 ]], false)
