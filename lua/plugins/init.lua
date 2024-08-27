@@ -54,12 +54,9 @@ require('lazy').setup({
     end
   },
   {
-    'nvimdev/guard.nvim',
-    dependencies = {
-      "nvimdev/guard-collection",
-    },
+    'mhartington/formatter.nvim',
     config = function()
-      require("plugins.guard")
+      require("plugins.formatter")
     end
   },
   {
@@ -72,7 +69,12 @@ require('lazy').setup({
       require('plugins.comment')
     end
   },
-
+  {
+      'lukas-reineke/indent-blankline.nvim',
+      config = function()
+          require("ibl").setup()
+      end
+  },
   -- Navigation
   {
     'nvim-telescope/telescope.nvim',
