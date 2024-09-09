@@ -5,6 +5,14 @@ vim.cmd([[packadd lazy.nvim]])
 require("lazy").setup({
 	-- Coding
 	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {},
+		config = function()
+			require("hardtime").setup()
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		config = function()
