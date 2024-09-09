@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "tsserver", "bashls", "eslint" },
+	ensure_installed = { "lua_ls", "ts_ls", "bashls", "eslint" },
 })
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
@@ -14,7 +14,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 -- Setup language servers
 local servers = {
 	"lua_ls",
-	"tsserver",
+	"ts_ls",
 	"bashls",
 	"pyright",
 }
