@@ -1,7 +1,7 @@
 -- Setup Mason and Mason LSPConfig
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "ts_ls", "bashls", "eslint" },
+	ensure_installed = { "lua_ls", "tsserver", "bashls", "eslint" },
 })
 
 -- Setup handlers for Mason LSPConfig

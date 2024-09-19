@@ -67,7 +67,6 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "copilot", priority_weight = 2 },
-	}, {
 		{ name = "buffer" },
 		{ name = "path" },
 	}),
