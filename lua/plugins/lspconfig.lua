@@ -1,83 +1,29 @@
 -- Setup Mason and Mason LSPConfig
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "tsserver", "bashls", "eslint" },
+	ensure_installed = { "lua_ls", "ts_ls", "bashls", "eslint", "html" },
 })
 
--- Setup handlers for Mason LSPConfig
+require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 require("mason-lspconfig").setup_handlers({
-	function(server_name)
+	-- The first entry (without a key) will be the default handler
+	-- and will be called for each installed server that doesn't have
+	-- a dedicated handler.
+	function(server_name) -- default handler (optional)
 		require("lspconfig")[server_name].setup({})
 	end,
-})
-
--- Import necessary modules
-local nvim_lsp = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- List of language servers to setup
-local servers = {
-	"lua_ls",
-	"ts_ls",
-	"bashls",
-	"pyright",
-}
-
--- Setup each language server with capabilities
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup({
-		capabilities = capabilities,
-	})
-end
-
--- Setup ESLint separately
-nvim_lsp.eslint.setup({})
-
--- Add vim as a global for lua_ls
-nvim_lsp.lua_ls.setup({
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
+	-- Next, you can provide a dedicated handler for specific servers.
+	-- For example, a handler override for the `rust_analyzer`:
+	["lua_ls"] = function()
+		require("lspconfig").lua_ls.setup({
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
 			},
-		},
-	},
-})
-require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "ts_ls", "bashls", "eslint" },
-})
-require("mason-lspconfig").setup_handlers({
-	function(server_name)
-		require("lspconfig")[server_name].setup({})
+		})
 	end,
-})
-
-local nvim_lsp = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- Setup language servers
-local servers = {
-	"lua_ls",
-	"ts_ls",
-	"bashls",
-	"pyright",
-}
-
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup({
-		capabilities = capabilities,
-	})
-end
-
-nvim_lsp.eslint.setup({})
-
--- Add vim as a global for lua_ls
-nvim_lsp.lua_ls.setup({
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
 })
