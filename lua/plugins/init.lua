@@ -3,9 +3,50 @@ vim.cmd([[packadd lazy.nvim]])
 
 -- Setup lazy.nvim
 require("lazy").setup({
+	-- Avante AI
+	{
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		lazy = false,
+		build = "make",
+		dependencies = {
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+			"zbirenbaum/copilot.lua", -- for providers='copilot'
+			{
+				"HakonHarnes/img-clip.nvim",
+				event = "VeryLazy",
+				opts = {
+					-- recommended settings
+					default = {
+						embed_image_as_base64 = false,
+						prompt_for_file_name = false,
+						drag_and_drop = {
+							insert_mode = true,
+						},
+					},
+				},
+			},
+			{
+				"MeanderingProgrammer/render-markdown.nvim",
+				opts = {
+					file_types = { "markdown", "Avante" },
+				},
+				ft = { "markdown", "Avante" },
+			},
+		},
+
+		config = function()
+			require("plugins.avante")
+		end,
+	},
+
 	-- Coding
 	{
 		"m4xshen/hardtime.nvim",
+		event = "BufRead",
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		opts = {},
 		config = function()
@@ -14,6 +55,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufRead",
 		run = ":TSUpdate",
 		config = function()
 			require("plugins.treesitter")
@@ -37,6 +79,7 @@ require("lazy").setup({
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -45,6 +88,7 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
 			"zbirenbaum/copilot-cmp",
+			"onsails/lspkind-nvim",
 		},
 		config = function()
 			require("plugins.cmp")
@@ -52,6 +96,7 @@ require("lazy").setup({
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = "BufReadPre",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
@@ -62,6 +107,7 @@ require("lazy").setup({
 	},
 	{
 		"mhartington/formatter.nvim",
+		event = "BufWritePre",
 		config = function()
 			require("plugins.formatter")
 		end,
@@ -71,19 +117,21 @@ require("lazy").setup({
 	},
 	{
 		"terrortylor/nvim-comment",
-		event = "BufWinEnter",
+		event = "BufRead",
 		config = function()
 			require("plugins.comment")
 		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		event = "BufRead",
 		config = function()
 			require("ibl").setup()
 		end,
 	},
 	{
 		"nvim-neotest/neotest",
+		event = "BufRead",
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
@@ -98,12 +146,14 @@ require("lazy").setup({
 	-- Navigation
 	{
 		"tomasky/bookmarks.nvim",
+		event = "BufRead",
 		config = function()
 			require("plugins.bookmarks")
 		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
+		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
 		config = function()
 			require("plugins.telescope")
@@ -111,6 +161,7 @@ require("lazy").setup({
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
+		event = "BufWinEnter",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("plugins.nvim-tree")
@@ -151,16 +202,18 @@ require("lazy").setup({
 	},
 	{
 		"tpope/vim-fugitive",
-		event = "BufWinEnter",
+		event = "BufRead",
 	},
 
 	-- Theme
 	{
-		"folke/tokyonight.nvim",
+		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme tokyonight-night]])
+			vim.g.gruvbox_material_background = "hard"
+			vim.g.gruvbox_material_palette = "mix"
+			vim.cmd([[colorscheme gruvbox-material]])
 		end,
 	},
 })

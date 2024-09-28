@@ -22,6 +22,7 @@ vim.opt.incsearch = true -- Show search results as you type
 vim.opt.termguicolors = true -- Enable true color support
 vim.opt.splitright = true -- Vertical splits will automatically be to the right
 vim.opt.splitbelow = true -- Horizontal splits will automatically be below
+vim.opt.laststatus = 3 -- Always show status line
 
 -- Performance optimizations
 vim.opt.lazyredraw = true -- Do not redraw while executing macros
