@@ -1,7 +1,7 @@
 local utils = require("utils")
 
 utils.map("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
-utils.map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+utils.map("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", { noremap = true, silent = true })
 utils.map("n", "<leader>q", "<Cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 utils.map("n", "gi", "<Cmd>Telescope lsp_implementations<CR>", { noremap = true, silent = true })
 utils.map("n", "gr", "<Cmd>Telescope lsp_references<CR>", { noremap = true, silent = true })
@@ -16,6 +16,7 @@ utils.map("n", "<S-L>", "<Cmd>vertical resize +5<CR>", { noremap = true, silent 
 utils.map("n", "<S-H>", "<Cmd>vertical resize -5<CR>", { noremap = true, silent = true })
 utils.map("n", "Q", "q", { noremap = true })
 utils.map("n", "q", "<Nop>", { noremap = true })
+utils.map("n", "X", "<Cmd>bd<CR>", { noremap = true })
 
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })

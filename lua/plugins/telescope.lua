@@ -6,7 +6,6 @@ require("telescope").setup({
 			require("telescope.themes").get_dropdown({
 				-- even more opts
 			}),
-
 			-- pseudo code / specification for writing custom displays, like the one
 			-- for "codeactions"
 			-- specific_opts = {
@@ -20,6 +19,16 @@ require("telescope").setup({
 			--      do the following
 			--   codeactions = false,
 			-- }
+		},
+	},
+	defaults = {
+		mappings = {
+			i = {
+				["<C-q>"] = require("telescope.actions").close,
+			},
+			n = {
+				["q"] = require("telescope.actions").close,
+			},
 		},
 	},
 })

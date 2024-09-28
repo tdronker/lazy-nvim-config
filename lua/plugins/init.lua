@@ -89,7 +89,9 @@ require("lazy").setup({
 			"L3MON4D3/LuaSnip",
 			"zbirenbaum/copilot-cmp",
 			"onsails/lspkind-nvim",
+			"rafamadriz/friendly-snippets",
 		},
+		build = "make install_jsregexp",
 		config = function()
 			require("plugins.cmp")
 		end,

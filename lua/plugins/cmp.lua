@@ -2,6 +2,11 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
+require("luasnip.loaders.from_vscode").lazy_load()
+luasnip.filetype_extend("typescriptreact", { "typescriptreact", "typescript", "javascriptreact", "javascript" })
+luasnip.filetype_extend("lua", { "vim" })
+luasnip.filetype_extend("typescriptreact", { "html" })
+
 require("copilot_cmp").setup()
 require("CopilotChat.integrations.cmp").setup()
 
@@ -65,8 +70,8 @@ cmp.setup({
 		},
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "nvim_lsp", priority_weight = 10 },
+		{ name = "luasnip", priority_weight = 5 },
 		{ name = "copilot", priority_weight = 2 },
 		{ name = "buffer" },
 		{ name = "path" },
@@ -95,26 +100,7 @@ cmp.setup.cmdline("/", {
 	sources = {
 		{ name = "buffer" },
 	},
-	mapping = cmp.mapping.preset.cmdline({
-		["<Tab>"] = {
-			c = function()
-				if cmp.visible() then
-					cmp.select_next_item()
-				else
-					cmp.complete()
-				end
-			end,
-		},
-		["<S-Tab>"] = {
-			c = function()
-				if cmp.visible() then
-					cmp.select_prev_item()
-				else
-					cmp.complete()
-				end
-			end,
-		},
-	}),
+	mapping = cmp.mapping.preset.cmdline(),
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
@@ -124,24 +110,5 @@ cmp.setup.cmdline(":", {
 	}, {
 		{ name = "cmdline" },
 	}),
-	mapping = cmp.mapping.preset.cmdline({
-		["<Tab>"] = {
-			c = function()
-				if cmp.visible() then
-					cmp.select_next_item()
-				else
-					cmp.complete()
-				end
-			end,
-		},
-		["<S-Tab>"] = {
-			c = function()
-				if cmp.visible() then
-					cmp.select_prev_item()
-				else
-					cmp.complete()
-				end
-			end,
-		},
-	}),
+	mapping = cmp.mapping.preset.cmdline(),
 })
