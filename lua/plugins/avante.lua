@@ -1,6 +1,7 @@
+-- Require the 'avante' module and set it up with the following configuration
 require("avante").setup({
 	---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-	provider = "copilot", -- Recommend using Claude
+	provider = "azure", -- Recommend using Claude
 	auto_suggestions_provider = "copilot", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
 	-- claude = {
 	--   endpoint = "https://api.anthropic.com",
@@ -8,6 +9,15 @@ require("avante").setup({
 	--   temperature = 0,
 	--   max_tokens = 4096,
 	-- },
+	azure = {
+		endpoint = "https://sabina-openai.openai.azure.com/", -- example: "https://<your-resource-name>.openai.azure.com"
+		deployment = "gpt-4", -- Azure deployment name (e.g., "gpt-4o", "my-gpt-4o-deployment")
+		api_version = "2023-03-15-preview",
+		timeout = 60000, -- Timeout in milliseconds
+		temperature = 0,
+		max_tokens = 4096,
+		["local"] = false,
+	},
 	behaviour = {
 		auto_suggestions = false, -- Experimental stage
 		auto_set_highlight_group = true,

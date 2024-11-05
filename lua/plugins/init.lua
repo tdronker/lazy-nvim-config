@@ -61,6 +61,7 @@ require("lazy").setup({
 			require("plugins.treesitter")
 		end,
 	},
+	-- CopilotChat: Provides GitHub Copilot integration for chat-like coding assistance
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 
@@ -77,6 +78,7 @@ require("lazy").setup({
 			require("plugins.copilot")
 		end,
 	},
+	-- Nvim-cmp: Autocompletion plugin for Neovim
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -96,6 +98,7 @@ require("lazy").setup({
 			require("plugins.cmp")
 		end,
 	},
+	-- LSPconfig: Configuration support for Language Server Protocols
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
@@ -107,6 +110,7 @@ require("lazy").setup({
 			require("plugins.lspconfig")
 		end,
 	},
+	-- Formatter: Provides code formatting capabilities
 	{
 		"mhartington/formatter.nvim",
 		event = "BufWritePre",
@@ -114,9 +118,11 @@ require("lazy").setup({
 			require("plugins.formatter")
 		end,
 	},
+	-- Vim-surround: Provides surround text editing capabilities
 	{
 		"tpope/vim-surround",
 	},
+	-- Nvim-comment: Easy commenting of code blocks
 	{
 		"terrortylor/nvim-comment",
 		event = "BufRead",
@@ -124,6 +130,7 @@ require("lazy").setup({
 			require("plugins.comment")
 		end,
 	},
+	-- Indent-blankline: Adds indentation guides to Neovim
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
@@ -131,6 +138,7 @@ require("lazy").setup({
 			require("ibl").setup()
 		end,
 	},
+	-- Neotest: Extensible testing framework for Neovim
 	{
 		"nvim-neotest/neotest",
 		event = "BufRead",
@@ -146,6 +154,7 @@ require("lazy").setup({
 		end,
 	},
 	-- Navigation
+	-- Bookmarks: Provides bookmarking functionality
 	{
 		"tomasky/bookmarks.nvim",
 		event = "BufRead",
@@ -153,6 +162,7 @@ require("lazy").setup({
 			require("plugins.bookmarks")
 		end,
 	},
+	-- Telescope: Fuzzy finder over lists
 	{
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
@@ -161,6 +171,7 @@ require("lazy").setup({
 			require("plugins.telescope")
 		end,
 	},
+	-- Nvim-tree: File explorer tree for Neovim
 	{
 		"kyazdani42/nvim-tree.lua",
 		event = "BufWinEnter",
@@ -169,6 +180,7 @@ require("lazy").setup({
 			require("plugins.nvim-tree")
 		end,
 	},
+	-- Barbar: Tabline plugin that handles multiple buffers
 	{
 		"romgrk/barbar.nvim",
 		event = "BufWinEnter",
@@ -177,6 +189,7 @@ require("lazy").setup({
 			require("plugins.barbar")
 		end,
 	},
+	-- Lualine: A blazing fast and easy to configure Neovim statusline
 	{
 		"nvim-lualine/lualine.nvim",
 		lazy = false,
@@ -186,6 +199,7 @@ require("lazy").setup({
 			require("plugins.lualine")
 		end,
 	},
+	-- Nvim-tmux-navigation: Seamless navigation between tmux panes and Neovim splits
 	{
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
@@ -202,12 +216,14 @@ require("lazy").setup({
 			})
 		end,
 	},
+	-- Vim-fugitive: A Git wrapper so awesome, it should be illegal
 	{
 		"tpope/vim-fugitive",
 		event = "BufRead",
 	},
 
 	-- Theme
+	-- Gruvbox-material: A modified Gruvbox theme with material palette
 	{
 		"sainnhe/gruvbox-material",
 		lazy = false,
